@@ -29,11 +29,11 @@ for (let i = 0; i < contraseña.length; i++){
         {sinEspacios = false;}
 }
 }
-if(dosLetras > 0) {dosLetras = false;} else {dosLetras = true;}
+if(dosLetras <= 0){dosLetras = true;} else{ dosLetras = false}
 
 switch (false){
     case dosLetras:
-        return `debe incluir almenos dos letras`;
+        return `la contraseña debe incluir almenos dos letras`;
     case unaMayuscula:
         return `la contraseña debe contener almenos una mayuscula`;
     case unaMinuscula:
@@ -48,4 +48,5 @@ switch (false){
         return`excelente la contraseña cumple con todos los requisitos`;
 }
 }
-alert(`${validarContraseña(`MartinMayol@2025`)}`);
+let pruebaDeContraseña = prompt(`porfavor igrese una contraseña de entre 12 y 20 caracteres. La cual debe contener una mayuscula, una minuscula, un numero y un caracter escpecial y ademas no debe contener espacios.`)
+alert(`${validarContraseña(pruebaDeContraseña)}`);
