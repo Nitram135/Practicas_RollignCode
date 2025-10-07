@@ -9,8 +9,6 @@ let sinEspacios = true;
 
 if (contraseña.length < 12){
     return `La contrseña debe tener almenos 12 caracteres`;
-} else if(contraseña.length > 20){
-    return`la contraseña debe tener maximo 20 caracteres`;
 } else{
 
 for (let i = 0; i < contraseña.length; i++){
