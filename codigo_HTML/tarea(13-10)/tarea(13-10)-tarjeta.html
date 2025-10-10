@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tarjeta de presentación</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/codigo_css/tarea(13-10).css" />
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <section class="container">
+        <div class="row">
+          <div class="col-6">
+            <form>
+              <div class="my-3">
+                <label class="form-label fw-bold">Nombre</label>
+                <input type="text" class="form-control" id="nombre" required />
+              </div>
+              <div class="my-3">
+                <label class="form-label fw-bold">Correo</label>
+                <input type="email" class="form-control" id="email" required />
+              </div>
+              <div class="my-3">
+                <label class="form-label fw-bold">Puesto</label>
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  id="rol"
+                >
+                  <option selected>Selecciona un puesto</option>
+                  <option value="Programador/a">Programador/a</option>
+                  <option value="Ingeniero/a">Ingeniero/a</option>
+                  <option value="Tester">Tester</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+              <div class="my-3">
+                <label class="form-label fw-bold"
+                  >Agrega una foto de perfil</label
+                >
+                <input
+                  class="form-control"
+                  type="url"
+                  placeholder="ingresa una url válida"
+                  id="image"
+                  required
+                />
+              </div>
+              <div>
+                <button type="button" class="btn btn-primary" id="btn-carga" onclick="cargar()">
+                  Cargar datos
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-6 mt-3">
+            <div class="profile-card">
+              <img
+                src="https://i.pinimg.com/originals/01/7c/44/017c44c97a38c1c4999681e28c39271d.png"
+                alt="Foto de perfil"
+                class="profile-photo"
+                id = "foto"
+              />
+              <div class="profile-name" id="cabecera">
+                Nombre del Profesional
+              </div>
+              <div class="profile-role" id="puesto">Rol o Especialidad</div>
+              <div class="profile-email" id="contacto">email@ejemplo.com</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/codigo_Javascript/tarea(13-10).js"></script>
+  </body>
+</html>
