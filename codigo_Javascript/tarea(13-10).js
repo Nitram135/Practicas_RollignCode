@@ -18,8 +18,6 @@ function agregarParrafo(){
 //-------------------------------------------------------------------------------------------
 // tarea de tarjeta de presentacion
 //-------------------------------------------------------------------------------------------
-
-
 const nombre = document.querySelector("#nombre");
 const email = document.querySelector("#email");
 const rol = document.querySelector("#rol");
@@ -30,13 +28,17 @@ const contacto = document.querySelector("#contacto");
 const foto = document.querySelector("#foto");
 
 function cargar(){
-   
-
-
-    cabecera.innerHTML = nombre.value;
-    contacto.innerHTML = email.value;
-    puesto.innerHTML = rol.value;
-    foto.src = image.value;
-   
+    if(nombre.value && email.value && rol.value && image.value){
+       cabecera.innerHTML = nombre.value;
+       contacto.innerHTML = email.value;
+       puesto.innerHTML = rol.value;
+       foto.src = image.value;
+       nombre.value = "";
+       email.value = "";
+       rol.value = "";
+       image.value = "";
+    } else {
+        alert("Faltan datos");
+    }
 }
-
+document.querySelector("#btn-carga").addEventListener("click", cargar);
