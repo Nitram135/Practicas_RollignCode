@@ -13,8 +13,6 @@ function agregarParrafo(){
     nuevoParrafo.innerText = "Soy un nuevo parrafo";
     document.getElementById("contenedor").appendChild(nuevoParrafo);
 }
-
-
 //-------------------------------------------------------------------------------------------
 // tarea de tarjeta de presentacion
 //-------------------------------------------------------------------------------------------
@@ -42,3 +40,7 @@ function cargar(){
     }
 }
 document.querySelector("#btn-carga").addEventListener("click", cargar);
+//------------------------------------------------------------------------------------------
+// tarea buscador de palabras
+//------------------------------------------------------------------------------------------
+
