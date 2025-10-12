@@ -65,21 +65,6 @@ switch (false){
         return`excelente la contraseña cumple con todos los requisitos`;
 }
 }
-//--------------------------------------------------
-
-const texto = document.querySelector("#areaDeTexto");
-const parrafo = document.querySelector("#prueba");
-const boton = document.querySelector("#boton");
-
-const funcionBoton = function() { 
-    let textoModificado = texto.value;
-    
-    for (let i = 0; i< textoModificado.length; i++){
-     if (textoModificado[i].toLowerCase() === textoModificado[i].toUpperCase() && textoModificado[i] !== " "){
-       textoModificado = textoModificado.replaceAll(textoModificado[i], "")
-     }}
-    return  parrafo.innerHTML = textoModificado;
-}
+//----------------------------------------------------
 
 
-boton.addEventListener("click", funcionBoton);
