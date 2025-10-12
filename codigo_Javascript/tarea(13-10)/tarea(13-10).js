@@ -49,8 +49,6 @@ let palabraBuscada = document.querySelector("#palabra");
 let mensajeCorrecto = document.querySelector("#mensaje_correcto");
 let mensajeError = document.querySelector("#mensaje_error");
 let boton = document.querySelector(".btn");
-
-
 const funcionBoton = function() { 
     let textoModificado = textoIngresado.value;
     for (let i = 0; i< textoModificado.length; i++){
@@ -62,6 +60,10 @@ const funcionBoton = function() {
        
     return  parrafo.innerHTML = textoModificado;
 }
-
-
 boton.addEventListener("click", funcionBoton);
+
+
+
+
+
+

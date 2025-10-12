@@ -1,0 +1,102 @@
+body {
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+margin: 0;
+font-family: Arial, sans-serif;
+background-color: #e0e0e0;
+}
+
+
+.calculator {
+/* Contenedor principal */
+width: 300px;
+padding: 15px;
+border-radius: 10px;
+background-color: #333;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+/* 2. Pantalla */
+#display {
+width: 100%;
+height: 60px;
+margin-bottom: 15px;
+padding: 10px;
+font-size: 2em;
+text-align: right;
+border: none;
+border-radius: 5px;
+background-color:#eee;
+box-sizing: border-box;
+}
+
+
+/* 3. Estructura de la cuadrícula con CSS Grid */
+.grid-container {
+display: grid;
+/* Define 4 columnas de igual tamaño (1fr) */
+grid-template-columns: repeat(4, 1fr);
+/* Espacio entre los elementos de la cuadrícula */
+gap: 10px;
+}
+
+
+/* 4. Estilos de los botones */
+.btn {
+height: 60px;
+font-size: 1.5em;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.2s;
+color: white;
+background-color:#666; /* Botones numéricos */
+}
+.btn:active,
+.btn-plus {
+filter: brightness(0.9);
+}
+
+
+/* Estilos específicos para tipos de botones */
+.operator {
+background-color: #ff9500; /* Naranja para operadores */
+}
+.clear {
+background-color: #d85050; /* Rojo para C */
+}
+.equals {
+background-color: #4caf50;
+grid-row: 4/6;
+grid-column: 4/5;
+height: auto;
+}
+
+
+/* 5. Ajustes de tamaño con CSS Grid */
+.zero {
+/* Ocupa dos columnas (desde la línea 1 hasta la 3) */
+grid-column: span 2;
+}
+.resta {
+grid-column: 4/5;
+grid-row: 1/2;
+}
+.plus {
+/* Ocupa dos filas (desde la línea 2 hasta la 4) */
+grid-column: 4/5;
+grid-row: 2/4;
+}
+
+
+.btn-plus {
+font-size: 1.5em;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.2s;
+color: white;
+}
