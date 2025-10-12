@@ -70,13 +70,14 @@ switch (false){
 const texto = document.querySelector("#areaDeTexto");
 const parrafo = document.querySelector("#prueba");
 const boton = document.querySelector("#boton");
-const a = " ";
 
 const funcionBoton = function() { 
     let textoModificado = texto.value;
-     if (textoModificado[0].toLowerCase() === textoModificado[0].toUpperCase()){
-        textoModificado.replace(textoModificado[0], "")
-     }
+    
+    for (let i = 0; i< textoModificado.length; i++){
+     if (textoModificado[i].toLowerCase() === textoModificado[i].toUpperCase() && textoModificado[i] !== " "){
+       textoModificado = textoModificado.replaceAll(textoModificado[i], "")
+     }}
     return  parrafo.innerHTML = textoModificado;
 }
 
