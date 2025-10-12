@@ -10,7 +10,7 @@ el boton "limpiar", se podra armar con una funcion que devuelva a "0" el value d
 */
 
 const visor = document.querySelector("#display");
-const botones = document.querySelectorAll("#btn");
+const botones = document.querySelectorAll("button");
 
 botones.forEach((btn)=>{
        btn.addEventListener("click", ()=>{
