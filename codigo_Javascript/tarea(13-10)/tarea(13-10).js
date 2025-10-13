@@ -40,27 +40,7 @@ function cargar(){
     }
 }
 document.querySelector("#btn-carga").addEventListener("click", cargar);
-//------------------------------------------------------------------------------------------
-// tarea buscador de palabras
-//------------------------------------------------------------------------------------------
 
-let textoIngresado = document.querySelector("#texto");
-let palabraBuscada = document.querySelector("#palabra");
-let mensajeCorrecto = document.querySelector("#mensaje_correcto");
-let mensajeError = document.querySelector("#mensaje_error");
-let boton = document.querySelector(".btn");
-const funcionBoton = function() { 
-    let textoModificado = textoIngresado.value;
-    for (let i = 0; i< textoModificado.length; i++){
-     if (textoModificado[i].toLowerCase() === textoModificado[i].toUpperCase() && textoModificado[i] !== " "){
-       textoModificado = textoModificado.replaceAll(textoModificado[i], "")
-     }}
-     textoModificado = textoModificado.toUpperCase().split(" ");
-
-       
-    return  parrafo.innerHTML = textoModificado;
-}
-boton.addEventListener("click", funcionBoton);
 
 
 

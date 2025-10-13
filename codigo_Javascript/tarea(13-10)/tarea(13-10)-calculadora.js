@@ -8,7 +8,6 @@ Nuestro programa debe poder interactuar con el usuario de manera dinamica. El mo
 el boton "limpiar", se podra armar con una funcion que devuelva a "0" el value del "display"
 
 */
-
 const visor = document.querySelector("#display");
 const botones = document.querySelectorAll("button");
 
