@@ -5,5 +5,15 @@ const msjCorrecto = document.querySelector("#mensaje_correcto");
 const msjError = document.querySelector("mensaje_error");
 
 
-
+botonBuscar.addEventListener("click", ()=>{
+    let resultado = "";
+   if (texto.value !== "" && palabra !== ""){
+      resultado = texto.value.trim().split(" ");
+      resultado.forEach((i)=> {
+      if (i.includes(palabra)){
+        
+      } 
+      });
+   }
+});
  
