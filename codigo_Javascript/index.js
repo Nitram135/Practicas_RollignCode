@@ -68,3 +68,19 @@ switch (false){
 //----------------------------------------------------
 
 
+class Persona {
+   constructor (nombre, edad){
+    this.nombre = nombre;
+    this.edad = edad;
+   }
+   saludar (){
+    console.log(`${this.nombre}`);
+   }
+}
+
+class Empleado extends Persona{
+    constructor(nombre,edad,puesto){
+       super(nombre,edad);
+       this.puesto = puesto;  
+    }
+}
