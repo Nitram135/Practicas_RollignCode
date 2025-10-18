@@ -10,28 +10,30 @@
 
     <main class="contenedor-main">
      <section>
-      <form>
-       <label for="codigo-analisis">CODIGO</label>
+      <form class="seccionDatosAnalisis">
+       <label for="codigo-analisis" class="labelCodigo">CODIGO</label>
        <input type="text" name="codigo_analisis" id="codigo-analisis">
-       <label for="nombre-analisis">NOMBRE</label>
+       <label for="nombre-analisis" class="labelNombre">NOMBRE</label>
        <input type="text" name="nombre_analisis" id="nombre-analisis">
-       <label for="nbu-analisis">NBU</label>
+       <label for="nbu-analisis" class="labelNbu">NBU</label>
        <input type="text" name="nbu_analisis" id="nbu-analisis">
-       <label for="metodo-reactivo">METODO</label>
+       <label for="metodo-reactivo" class="labelMetodo">METODO</label>
        <input type="text" name="metodo_reactivo" id="metodo-reactivo">
-       <label for="marca-reactivo">MARCA</label>
+       <label for="marca-reactivo" class="labelMarca">MARCA</label>
        <input type="text" name="marca_reactivo" id="marca-reactivo">
-       <label for="indicaciones-analisis">INDICACIONES</label>
-       <textarea name="indicaciones_analisis" id="indicaciones-analisis"></textarea>  
+       <label for="indicaciones-analisis" class="labelIndicaciones">INDICACIONES</label>
+       <textarea name="indicaciones_analisis" id="indicaciones-analisis"></textarea>
+       <div class="contenedorBotones">  
        <button type="submit" id="btn-aceptar">NUEVO</button>
        <button type="reset" id="btn-cancelar">MODIFICAR</button>
+       </div>
       </form>
      </section>
-     <section>
-        <div id="mostrador-parametros">
+     <section class="seccionParametros">
+        <div id="mostradorParametros">
 
         </div>
-        <div id="opciones-parametros">
+        <div id="opcionesParametros">
             <button>AGREGAR PARAMETROS</button>
             <button>FORMULAS ASOCIADAS</button>
             <button>VALORES DE REFERENCIA</button>

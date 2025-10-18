@@ -1,4 +1,84 @@
+
+/* en esta  aprte del codigo intentaremos ver el deiseño del area de modificacionde  los datos del analisis */
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
 .contenedor-main{
-   display: flex;
-   justify-content: space-between;
+   background: #bbb;
+   display: grid;
+   grid-template-areas: 
+   'seccionDatosAnalisis seccionParametros';
+   height: 500px;
+   max-width: 967px;
+   gap: 20px;
+}
+.seccionDatosAnalisis{
+   display: grid;
+   grid-template-columns: 1fr 3fr;
+   grid-area: 
+   'codigo codigoValor'
+   'nombre nombreValor'
+   'nbu nbuValor'
+   'metodo metodoValor'
+   'marca marcaValores'
+   'indicaciones indicaciones'
+   'indicacionesValores indicacionesValores'
+   'botones'
+   ;
+}
+.labelCodigo{
+   grid-area: 'labelCodigo';
+}
+.labelNombre{
+   grid-area: 'nombre';
+}
+.labelNbu{
+   grid-area: 'nbu';
+}
+.labelMetodo{
+   grid-area: 'metodo';
+}
+.labelMarca{
+   grid-area: 'marca';
+}
+.labelIndicaciones{
+   grid-area: 'indicaciones';
+}
+#codigo-analisis{
+   grid-area: 'codigoValor';
+}
+#nombre-analisis{
+   grid-area: 'nombreValor';
+}
+#nbu-analisis{
+   grid-area: 'nbuValor';
+}
+#metodo-reactivo{
+   grid-area: 'metodoValor';
+}
+#marca-reactivo{
+   grid-area: 'marcaValor';
+}
+#indicaciones-analisis{
+   grid-area: 'indicacionesValores';
+   width: 100%;
+}
+
+.contenedorBotones{
+   display: grid;
+   justify-content: center;
+}
+/*aqui empezaremos a editar la seccion de los parametros del analsis*/
+
+.seccionParametros{
+   display: grid;
+   grid-area: 'seccionParametros';
+}
+#opcionesParametros{
+   display: grid;
+   height: 100px;
+   gap: 10px;
+   grid-template-columns: 1fr 1fr;
 }
