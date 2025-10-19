@@ -5,80 +5,91 @@
    margin: 0;
    box-sizing: border-box;
 }
-.contenedor-main{
-   background: #bbb;
-   display: grid;
-   grid-template-areas: 
-   'seccionDatosAnalisis seccionParametros';
-   height: 500px;
-   max-width: 967px;
-   gap: 20px;
-}
-.seccionDatosAnalisis{
-   display: grid;
-   grid-template-columns: 1fr 3fr;
-   grid-area: 
-   'codigo codigoValor'
-   'nombre nombreValor'
-   'nbu nbuValor'
-   'metodo metodoValor'
-   'marca marcaValores'
-   'indicaciones indicaciones'
-   'indicacionesValores indicacionesValores'
-   'botones'
-   ;
-}
-.labelCodigo{
-   grid-area: 'labelCodigo';
-}
-.labelNombre{
-   grid-area: 'nombre';
-}
-.labelNbu{
-   grid-area: 'nbu';
-}
-.labelMetodo{
-   grid-area: 'metodo';
-}
-.labelMarca{
-   grid-area: 'marca';
-}
-.labelIndicaciones{
-   grid-area: 'indicaciones';
-}
-#codigo-analisis{
-   grid-area: 'codigoValor';
-}
-#nombre-analisis{
-   grid-area: 'nombreValor';
-}
-#nbu-analisis{
-   grid-area: 'nbuValor';
-}
-#metodo-reactivo{
-   grid-area: 'metodoValor';
-}
-#marca-reactivo{
-   grid-area: 'marcaValor';
-}
-#indicaciones-analisis{
-   grid-area: 'indicacionesValores';
-   width: 100%;
-}
 
-.contenedorBotones{
-   display: grid;
-   justify-content: center;
-}
-/*aqui empezaremos a editar la seccion de los parametros del analsis*/
+.formularioAnalisis{
+   display: flex;
+   height: 650px;
+   max-width: 820px;
+   border: 1px solid #000;
 
-.seccionParametros{
-   display: grid;
-   grid-area: 'seccionParametros';
 }
-#opcionesParametros{
+/* aqui trabajaremos sobre la seccion de los datos de los analisis*/
+.seccionAnalisis{
+   display: flex;
+   flex-flow: column wrap;
+   width: 45%;
+   height: 100%; 
+   padding: 20px 0 10px 15px;
+
+}
+.datoAnalisis{
    display: grid;
-   height: 100px;
+   grid-template-columns: 1fr 4fr;
    gap: 10px;
-   grid-template-columns: 1fr 1fr;
+   height: 30%;
+   & label{
+     display: flex;
+     align-items: center;
+   }
 }
+.indicacionesAnalisis{
+   display: flex;
+   flex-flow: column wrap;
+   justify-content: start;
+   padding-top: 30px;
+   height: 55%;
+   & .labelIndicaciones{
+      height: 10%;
+   }
+   & #indicaciones-analisis{
+      height: 80%;
+      resize: none;
+   }
+}
+.botonesAnalisis{
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: center;
+   align-items: center;
+   height: 15%;
+   & #btn-aceptar{
+      width: 100px;
+      height: 25px;
+   }
+   & #btn-cancelar{
+      width: 100px;
+      height: 25px;
+      margin: 20px;
+   }
+}
+
+/* aqui veremos la seccion de los parametros*/
+.seccionParametros{
+   width: 55%;
+   height: 100%;
+   display: flex;
+   flex-flow: column wrap;
+   padding: 20px 10px 10px 15px;
+   & label{
+      width: 100%;
+      height: 5%;
+   }
+}
+.mostradorParametros{
+   height: 75%;
+   border: 1px solid #000;
+}
+.botonesParametros{
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 5px;
+   height: 20%;
+   justify-items: center;
+   align-items: center;
+   padding-top: 10px;
+   & button {
+      width: 200px;
+      height: 30px;
+   }
+}
+/*aqui agregaremos las mediasquery para el diseño responsive*/

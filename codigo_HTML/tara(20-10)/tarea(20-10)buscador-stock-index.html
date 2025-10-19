@@ -8,32 +8,35 @@
 </head>
 <body>
 
-    <main class="contenedor-main">
-     <section>
-      <form class="seccionDatosAnalisis">
+    <main>
+     <form class="formularioAnalisis">
+      <section class="seccionAnalisis">
+       <div class="datoAnalisis">
        <label for="codigo-analisis" class="labelCodigo">CODIGO</label>
-       <input type="text" name="codigo_analisis" id="codigo-analisis">
+       <input type="text" name="codigo_analisis" id="codigo-analisis" required>
        <label for="nombre-analisis" class="labelNombre">NOMBRE</label>
-       <input type="text" name="nombre_analisis" id="nombre-analisis">
+       <input type="text" name="nombre_analisis" id="nombre-analisis" required>
        <label for="nbu-analisis" class="labelNbu">NBU</label>
-       <input type="text" name="nbu_analisis" id="nbu-analisis">
+       <input type="text" name="nbu_analisis" id="nbu-analisis" required>
        <label for="metodo-reactivo" class="labelMetodo">METODO</label>
-       <input type="text" name="metodo_reactivo" id="metodo-reactivo">
+       <input type="text" name="metodo_reactivo" id="metodo-reactivo" required>
        <label for="marca-reactivo" class="labelMarca">MARCA</label>
-       <input type="text" name="marca_reactivo" id="marca-reactivo">
+       <input type="text" name="marca_reactivo" id="marca-reactivo" required>
+       </div>
+       <div class="indicacionesAnalisis">
        <label for="indicaciones-analisis" class="labelIndicaciones">INDICACIONES</label>
        <textarea name="indicaciones_analisis" id="indicaciones-analisis"></textarea>
-       <div class="contenedorBotones">  
+       </div>
+       <div class="botonesAnalisis">
        <button type="submit" id="btn-aceptar">NUEVO</button>
        <button type="reset" id="btn-cancelar">MODIFICAR</button>
        </div>
-      </form>
-     </section>
+      </section>
      <section class="seccionParametros">
-        <div id="mostradorParametros">
-
+        <label>PARAMETROS DE ANALISIS</label>
+        <div class="mostradorParametros">
         </div>
-        <div id="opcionesParametros">
+        <div class="botonesParametros">
             <button>AGREGAR PARAMETROS</button>
             <button>FORMULAS ASOCIADAS</button>
             <button>VALORES DE REFERENCIA</button>
@@ -42,6 +45,7 @@
             <button>INFORME VISTA PREVIA</button>
         </div>
      </section>
+    </form> 
     </main>
 
     <script src="/codigo_Javascript/tarea(20-10)/tarea(20-10)buscador-stock.js"></script>
