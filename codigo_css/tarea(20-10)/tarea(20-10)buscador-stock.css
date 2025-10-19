@@ -88,6 +88,10 @@
       }
    }
 }
+#parametros tr td{
+   border: 1px solid #ccc;
+   padding-left: 5px;
+}
 .botonesParametros{
    display: grid;
    grid-template-columns: 1fr 1fr;
