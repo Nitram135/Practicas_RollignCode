@@ -29,20 +29,28 @@
        </div>
        <div class="botonesAnalisis">
        <button type="submit" id="btn-aceptar">NUEVO</button>
-       <button type="reset" id="btn-cancelar">MODIFICAR</button>
+       <button type="button" id="btn-cancelar">MODIFICAR</button>
        </div>
       </section>
      <section class="seccionParametros">
         <label>PARAMETROS DE ANALISIS</label>
-        <div class="mostradorParametros">
-        </div>
+        <table class="mostradorParametros">
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Orden</th>
+            </tr>
+            <tbody id="parametros">
+
+            </tbody>
+        </table>
         <div class="botonesParametros">
-            <button>AGREGAR PARAMETROS</button>
-            <button>FORMULAS ASOCIADAS</button>
-            <button>VALORES DE REFERENCIA</button>
-            <button>ELIMINAR PARAMETROS</button>
-            <button>IMPORTAR PARAMETROS</button>
-            <button>INFORME VISTA PREVIA</button>
+            <button type="button" id="agregarParametros">AGREGAR PARAMETROS</button>
+            <button type="button" id="formulasAsociadas">FORMULAS ASOCIADAS</button>
+            <button type="button" id="valoresReferencia">VALORES DE REFERENCIA</button>
+            <button type="button" id="eliminarParametros">ELIMINAR PARAMETROS</button>
+            <button type="button" id="importarParametros">IMPORTAR PARAMETROS</button>
+            <button type="button" id="informeVistaPrevia">INFORME VISTA PREVIA</button>
         </div>
      </section>
     </form> 

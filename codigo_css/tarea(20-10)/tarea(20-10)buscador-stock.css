@@ -78,6 +78,15 @@
 .mostradorParametros{
    height: 75%;
    border: 1px solid #000;
+   display: flex;
+   flex-flow: column wrap;
+   & tr{
+      display: grid;
+      grid-template-columns: 1fr 3fr 1fr;
+      & th{
+         border: 1px solid #000;
+      }
+   }
 }
 .botonesParametros{
    display: grid;
