@@ -17,18 +17,18 @@
        <label for="nombre-analisis" class="labelNombre">NOMBRE</label>
        <input type="text" name="nombre_analisis" id="nombre-analisis" required>
        <label for="nbu-analisis" class="labelNbu">NBU</label>
-       <input type="text" name="nbu_analisis" id="nbu-analisis" required>
+       <input type="text" name="nbu_analisis" id="nbu-analisis" readonly required>
        <label for="metodo-reactivo" class="labelMetodo">METODO</label>
-       <input type="text" name="metodo_reactivo" id="metodo-reactivo" required>
+       <input type="text" name="metodo_reactivo" id="metodo-reactivo" readonly required>
        <label for="marca-reactivo" class="labelMarca">MARCA</label>
-       <input type="text" name="marca_reactivo" id="marca-reactivo" required>
+       <input type="text" name="marca_reactivo" id="marca-reactivo" readonly required>
        </div>
        <div class="indicacionesAnalisis">
        <label for="indicaciones-analisis" class="labelIndicaciones">INDICACIONES</label>
-       <textarea name="indicaciones_analisis" id="indicaciones-analisis"></textarea>
+       <textarea name="indicaciones_analisis" id="indicaciones-analisis" readonly required></textarea>
        </div>
        <div class="botonesAnalisis">
-       <button type="submit" id="btn-aceptar">NUEVO</button>
+       <button type="button" id="btn-aceptar">NUEVO</button>
        <button type="button" id="btn-cancelar">MODIFICAR</button>
        </div>
       </section>
