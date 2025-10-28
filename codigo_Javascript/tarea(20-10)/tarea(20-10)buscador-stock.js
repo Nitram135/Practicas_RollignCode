@@ -16,7 +16,7 @@ let nuevo_aceptar = document.querySelector("#btn-aceptar");
 let todoElformulario = document.querySelector(".formularioAnalisis");
 //-------------
 //aqui crearemos variables que concideremos mas utiles
-let todosLosInputs = document.querySelectorAll("input");
+let todosLosInputs = document.querySelectorAll(".todosLosInputs");
 
 function Analisis (codigo,nombre,nbu, metodo,marca,indicaciones){
      this.codigo = codigo;
@@ -32,23 +32,27 @@ let botonNuevoActivado = false;
 let btonModificarActivado = false;
 const baseDatos= [];
 
-
-todoElformulario.addEventListener("keydown", (e)=>{
-    if (e.key === "Enter"){
-     e.preventDefault();
-    }
-     
+todosLosInputs.forEach((item,index,array)=>{
+    item.addEventListener("keydown", (e)=>{
+        if(e.key === "Enter"){
+            e.preventDefault();
+            let siguiente = index + 1;
+            if(siguiente){
+                array[siguiente].focus();
+            }else {
+                nuevo_aceptar.focus();
+            }
+        }
+    });
 });
 
-
+/*  en esta seccion vamos a crear las funcionalidades del boton nuevo y aceptar*/
 nuevo_aceptar.addEventListener("click", (e)=>{  
-    if(botonNuevoActivado === false){
+    if(!botonNuevoActivado && !btonModificarActivado){
         todosLosInputs.forEach((i)=>{
           i.value = "";
           i.removeAttribute("readonly");
         });
-        indicaciones.removeAttribute("readonly");
-        indicaciones.value ="";
         parametros.innerHTML = "";
         modificar_cancelar.innerHTML = "CANCELAR";
         modificar_cancelar.type = "reset";
@@ -56,26 +60,27 @@ nuevo_aceptar.addEventListener("click", (e)=>{
         e.preventDefault()
         nuevo_aceptar.type = "submit"; 
         botonNuevoActivado = true;
-        focus(codigo);
-    }else{
+        codigo.focus();
+    }else if(botonNuevoActivado && btonModificarActivado){
         let coincidencia = false;
-        for (let i in baseDatos){
-            if(codigo.value === i.codigo.value){
-                i.nombre.value = nombre.value;
-                i.nbu.value = nbu.value;
-                i.metodo.value = metodo.value;
-                i.marca.value = marca.value;
-                i.indicaciones.value = indicaciones.value;
-                coincidencia = true
-            }
-        } 
-        if (codigo.value !=="" && nombre.value !== "" && nbu.value !== "" && metodo.value !== "" && marca.value !== "" && indicaciones.value !== "" && coincidencia === false){
+        let inputsVacios = false;
+        todosLosInputs.forEach((item)=>{
+           if(!item.value){
+            inputsVacios = true; 
+           }
+        });
+        baseDatos.forEach((item,index,array)=>{
+          if (array[index].codigo === codigo.value || array[index].nombre === nombre.value || array[index].nbu === nbu.value ){
+            coincidencia = true;
+          }
+        });
+        
+        if (!coincidencia && !inputsVacios){
             let nuevoAnalisis = new Analisis(codigo.value,nombre.value.toUpperCase(),nbu.value,metodo.value.toUpperCase(),marca.value.toUpperCase(),indicaciones.value);
             baseDatos.push(nuevoAnalisis);
             todosLosInputs.forEach((i)=>{
             i.value = "";
             });
-            indicaciones.value ="";
             parametros.innerHTML = "";
             modificar_cancelar.innerHTML = "MODIFICAR";
             modificar_cancelar.type = "button";
@@ -86,12 +91,11 @@ nuevo_aceptar.addEventListener("click", (e)=>{
             marca.setAttribute("readonly","");
             indicaciones.setAttribute("readonly","");
             botonNuevoActivado = false;
-            focus(codigo);
-        }else if (codigo.value === "" || nombre.value ===  ""|| nbu.value === ""|| metodo.value ===  ""|| marca.value ===  ""|| indicaciones.value === ""){
+            codigo.focus();
+        }else if (inputsVacios){
             todosLosInputs.forEach((i)=>{
             i.value = "";
             });
-            indicaciones.value ="";
             parametros.innerHTML = "";
             modificar_cancelar.innerHTML = "MODIFICAR";
             modificar_cancelar.type = "button";
@@ -102,16 +106,46 @@ nuevo_aceptar.addEventListener("click", (e)=>{
             marca.setAttribute("readonly","");
             indicaciones.setAttribute("readonly","");
             botonNuevoActivado = false;
-            focus(codigo);
+            codigo.focus();
             alert(`Faltan ingreasar Datos`);
+        }else if(coincidencia){
+            todosLosInputs.forEach((i)=>{
+            i.value = "";
+            });
+            parametros.innerHTML = "";
+            modificar_cancelar.innerHTML = "MODIFICAR";
+            modificar_cancelar.type = "button";
+            nuevo_aceptar.innerHTML = "NUEVO";
+            nuevo_aceptar.type = "button";
+            nbu.setAttribute("readonly","");
+            metodo.setAttribute("readonly","");
+            marca.setAttribute("readonly","");
+            indicaciones.setAttribute("readonly","");
+            botonNuevoActivado = false;
+            codigo.focus();
+            alert(`Los datos coinciden con algun analisis ya registrado`);  
         }
-    } 
+
+    }else if (!botonNuevoActivado && btonModificarActivado){
+         let coincidencia = false;
+         let inputsVacios = false;
+              todosLosInputs.forEach((item)=>{
+           if(!item.value){
+            inputsVacios = true; 
+           }
+        });
+        baseDatos.forEach((item,index,array)=>{
+          if (array[index].codigo === codigo.value || array[index].nombre === nombre.value || array[index].nbu === nbu.value ){
+            coincidencia = true;
+          }
+        });
+    }
 });
 
 /* aqui veremos el boton modificar*/ 
 modificar_cancelar.addEventListener("click", (e)=>{
      
-    if(botonNuevoActivado === false && codigo.value !== ""){
+    if(!botonNuevoActivado && codigo.value){
         todosLosInputs.forEach((i)=>{
           i.removeAttribute("readonly");
         });
@@ -148,7 +182,7 @@ modificar_cancelar.addEventListener("click", (e)=>{
 });
 
 codigo.addEventListener("blur",()=>{
-   if (botonNuevoActivado === false && codigo.value !== ""){
+   if (!botonNuevoActivado && codigo.value){
        baseDatos.forEach((i)=>{
         if(i.codigo === codigo.value){
             nombre.value = i.nombre;
@@ -162,7 +196,6 @@ codigo.addEventListener("blur",()=>{
                          <td>${"0"}</td>`;
              fila.innerHTML = celda;
              parametros.innerHTML = fila.innerHTML
-
         }
        });
    }
