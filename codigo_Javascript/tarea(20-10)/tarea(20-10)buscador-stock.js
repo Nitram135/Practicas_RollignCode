@@ -37,10 +37,12 @@ todosLosInputs.forEach((item,index,array)=>{
         if(e.key === "Enter"){
             e.preventDefault();
             let siguiente = index + 1;
-            if(siguiente){
-                array[siguiente].focus();
+            if(siguiente === array.length && !botonNuevoActivado){
+                nuevo_aceptar.focus();    
+            }else if(siguiente === array.length && botonNuevoActivado){
+                modificar_cancelar.focus();  
             }else {
-                nuevo_aceptar.focus();
+                array[siguiente].focus();
             }
         }
     });
@@ -132,31 +134,47 @@ nuevo_aceptar.addEventListener("click", (e)=>{
          let coincidencia = false;
          let inputsVacios = false;
          let posicion = 0;
-              todosLosInputs.forEach((item)=>{
-           if(!item.value){
-            inputsVacios = true; 
-           }
-        });
-        baseDatos.forEach((item,index,array)=>{
-          if (array[index].nombre === nombre.value || array[index].nbu === nbu.value ){
-            coincidencia = true;
-          }if(array[index].codigo === codigo.value){
-            posicion = index;
-          }
-        });
-        if (!inputsVacios && !coincidencia){
-            baseDatos[posicion].nombre = nombre.value;
-            baseDatos[posicion].nbu = nbu.value;
-            baseDatos[posicion].metodo = metodo.value;
-            baseDatos[posicion].marca = marca.value;
-            baseDatos[posicion].indicaciones = indicaciones.value;  
-             todosLosInputs.forEach((i)=>{
-            i.value = "";
+           todosLosInputs.forEach((item)=>{
+             if(!item.value){
+             inputsVacios = true; 
+            }
             });
-
+         baseDatos.forEach((item,index,array)=>{
+          if(item.codigo === codigo.value){
+            posicion = index;
+          }if(array[index].codigo !== array[posicion].codigo && (item.nombre === nombre.value || item.nbu === nbu.value)){
+            coincidencia = true;
+          }
+         });
+         if (inputsVacios){
+            alert(`Faltan rellenar campos`)
+         }else if (coincidencia){
+            alert(`Los datos ingresados ya existen en otro analisis`);
+         }else if (!inputsVacios && !coincidencia){
+            baseDatos[posicion].nombre = nombre.value.toUpperCase();
+            baseDatos[posicion].nbu = nbu.value;
+            baseDatos[posicion].metodo = metodo.value.toUpperCase();
+            baseDatos[posicion].marca = marca.value.toUpperCase();
+            baseDatos[posicion].indicaciones = indicaciones.value.toUpperCase();
+            todosLosInputs.forEach((item)=>{
+              item.value ="";
+            });
+              parametros.innerHTML ="";
+              codigo.removeAttribute("readonly", "")
+              nbu.setAttribute("readonly", "");
+              metodo.setAttribute("readonly","");
+              marca.setAttribute("readonly","");
+              indicaciones.setAttribute("readonly","");
+              modificar_cancelar.innerHTML = "MODIFICAR";
+              modificar_cancelar.type = "button";
+              nuevo_aceptar.innerHTML = "NUEVO";
+              nuevo_aceptar.type = "button";
+              btonModificarActivado = false;
+              codigo.focus;
+         }
         }
     }
-});
+);
 
 /* aqui veremos el boton modificar*/ 
 modificar_cancelar.addEventListener("click", (e)=>{
@@ -217,22 +235,4 @@ codigo.addEventListener("blur",()=>{
 
 
 
-// codigo.addEventListener('blur', ()=>{
-//     if(botonNuevoActivado ===false){
-//        let fila = document.createElement('tr');
-//        let celda = `<td>${"412"}</td>
-//                    <td>${"GLUCEMIA"}</td>
-//                    <td>${"0"}</td>`;
-//        codigo.value = "412";
-//        nombre.value = "GLUCEMIA";
-//        nbu.value = "660412";
-//        metodo.value= "ENZIMATICO";
-//        marca.value = "GT LAB";
-//        indicaciones.value = "AYUNO DE 8 HS";
-//       fila.innerHTML = celda;
-//       parametros.innerHTML = fila.innerHTML
-//       };
-      
-//     }
-// );
 
