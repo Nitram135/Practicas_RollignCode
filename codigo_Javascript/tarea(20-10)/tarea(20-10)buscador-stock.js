@@ -61,7 +61,7 @@ nuevo_aceptar.addEventListener("click", (e)=>{
         nuevo_aceptar.type = "submit"; 
         botonNuevoActivado = true;
         codigo.focus();
-    }else if(botonNuevoActivado && btonModificarActivado){
+    }else if(botonNuevoActivado && !btonModificarActivado){
         let coincidencia = false;
         let inputsVacios = false;
         todosLosInputs.forEach((item)=>{
@@ -127,44 +127,58 @@ nuevo_aceptar.addEventListener("click", (e)=>{
         }
 
     }else if (!botonNuevoActivado && btonModificarActivado){
+        e.preventDefault()
+        codigo.setAttribute("readonly","");
          let coincidencia = false;
          let inputsVacios = false;
+         let posicion = 0;
               todosLosInputs.forEach((item)=>{
            if(!item.value){
             inputsVacios = true; 
            }
         });
         baseDatos.forEach((item,index,array)=>{
-          if (array[index].codigo === codigo.value || array[index].nombre === nombre.value || array[index].nbu === nbu.value ){
+          if (array[index].nombre === nombre.value || array[index].nbu === nbu.value ){
             coincidencia = true;
+          }if(array[index].codigo === codigo.value){
+            posicion = index;
           }
         });
+        if (!inputsVacios && !coincidencia){
+            baseDatos[posicion].nombre = nombre.value;
+            baseDatos[posicion].nbu = nbu.value;
+            baseDatos[posicion].metodo = metodo.value;
+            baseDatos[posicion].marca = marca.value;
+            baseDatos[posicion].indicaciones = indicaciones.value;  
+             todosLosInputs.forEach((i)=>{
+            i.value = "";
+            });
+
+        }
     }
 });
 
 /* aqui veremos el boton modificar*/ 
 modificar_cancelar.addEventListener("click", (e)=>{
      
-    if(!botonNuevoActivado && codigo.value){
+    if(!botonNuevoActivado && !btonModificarActivado && codigo.value){
         todosLosInputs.forEach((i)=>{
           i.removeAttribute("readonly");
         });
-        indicaciones.removeAttribute("readonly");
         modificar_cancelar.innerHTML = "CANCELAR";
         e.preventDefault();
         modificar_cancelar.type = "reset";
         nuevo_aceptar.innerHTML = "ACEPTAR";
         nuevo_aceptar.type = "submit";
-        botonNuevoActivado = true;
+        btonModificarActivado = true;
     } 
-    else if(botonNuevoActivado === false && codigo.value === "" ){
+    else if(!botonNuevoActivado && !btonModificarActivado && !codigo.value){
       alert(`Ingresar un analisis antes de modificar`);
     } 
     else{
         todosLosInputs.forEach((i)=>{
             i.value = "";
             });
-            indicaciones.value ="";
             parametros.innerHTML = "";
             modificar_cancelar.innerHTML = "MODIFICAR";
             modificar_cancelar.type = "button";
@@ -175,7 +189,7 @@ modificar_cancelar.addEventListener("click", (e)=>{
             marca.setAttribute("readonly","");
             indicaciones.setAttribute("readonly","");
             botonNuevoActivado = false;
-            focus(codigo);
+            codigo.focus();
     }
     
     
